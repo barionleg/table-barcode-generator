@@ -1,0 +1,24 @@
+// To install Bulma: npm i -s bulma
+@import "bulma/css/bulma.css";
+
+.table-custom {
+  td,
+  th {
+    border: solid 1px darkgray;
+    padding: 1rem;
+  }
+}
+
+@media print {
+  .screen-only {
+    display: none !important;
+  }
+}
+
+footer {
+  text-align: right;
+}
+
+.notification {
+  margin-top: 0.5rem;
+}
