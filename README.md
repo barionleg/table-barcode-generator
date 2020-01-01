@@ -15,3 +15,13 @@ have whitespace padding trimmed.
 Uses global install of `parcel-bundler`.
 
 If working in a team, you should install this locally instead with `npm install --save-dev parcel-bundler`
+
+## Build
+
+For development
+
+    npm run start
+
+For production
+
+    npm run build

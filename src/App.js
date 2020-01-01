@@ -10,11 +10,15 @@ const App = () => {
   const [error, setError] = React.useState(null);
   const [barcodeWidth, setBarcodeWidth] = React.useState();
   const [delimiter, setDelimiter] = React.useState("\t");
+  const [barcodeType, setBarcodeType] = React.useState("qrcode");
   const [margin, setMargin] = React.useState(); // not used
 
   // this only handles delimiter change at the moment, only radio group used here
   const handleRadioChange = e => {
-    setDelimiter(e.target.value === "tab" ? "\t" : ",");
+    if (e.target.name === "delimiter")
+      setDelimiter(e.target.value === "tab" ? "\t" : ",");
+
+    if (e.target.name === "barcodeType") setBarcodeType(e.target.value);
   };
 
   return (
@@ -77,6 +81,30 @@ const App = () => {
               </label>
             </div>
 
+            <div className="control">
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="barcodeType"
+                  value="qrcode"
+                  checked={barcodeType === "qrcode"}
+                  onChange={handleRadioChange}
+                />
+                &nbsp;QR Code
+              </label>
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="barcodeType"
+                  value="code128"
+                  checked={barcodeType === "code128"}
+                  onChange={handleRadioChange}
+                  disabled
+                />
+                &nbsp;Code128
+              </label>
+            </div>
+
             <div>
               Title (optional):
               <input
@@ -95,7 +123,11 @@ const App = () => {
 
       {title !== "" && <h2 className="title">{title}</h2>}
 
-      <OutputTable records={records} hasHeaderRow={hasHeaderRow} />
+      <OutputTable
+        records={records}
+        hasHeaderRow={hasHeaderRow}
+        barcodeType={barcodeType}
+      />
 
       <footer className="screen-only">
         &copy; <a href="https://gock.net/">Andy Gock</a> | source @

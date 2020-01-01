@@ -11,9 +11,7 @@ const OutputTable = ({
   const [barcodes, setBarcodes] = React.useState([]);
 
   // generate qr code for each row's last column, returns array of Promise resolving to an array of data URLs
-  const createQRCodes = async records => {
-    const barcodeContent = records.map(row => row[row.length - 1]);
-
+  const createQRCodes = async barcodeContent => {
     // https://github.com/soldair/node-qrcode
     // https://github.com/soldair/node-qrcode#qr-code-options
     const qrcodes = await Promise.all(
@@ -29,9 +27,19 @@ const OutputTable = ({
 
   React.useEffect(() => {
     const createBarcodes = async () => {
+      // get array of strings, to convert to barcodes
+      const barcodeContent = records.map(row => row[row.length - 1]);
+
       if (barcodeType === "qrcode") {
-        const qrcodes = await createQRCodes(records);
+        // create array of base64 encodings of barcodes
+        const qrcodes = await createQRCodes(barcodeContent);
+
+        // update state
         setBarcodes(qrcodes);
+      }
+
+      if (barcodeType === "code128") {
+        // TODO: coming soon...
       }
 
       // TODO: other types of barcodes...
