@@ -5,7 +5,7 @@ const OutputTable = ({
   records,
   barcodeType = "qrcode",
   barcodeWidth = 100,
-  barcodeMargin = 0,
+  barcodeMargin = 10,
   hasHeaderRow = false
 }) => {
   const [barcodes, setBarcodes] = React.useState([]);
@@ -18,7 +18,8 @@ const OutputTable = ({
       barcodeContent.map(data =>
         QRCode.toDataURL(data, {
           width: barcodeWidth,
-          margin: barcodeMargin
+          // margin: barcodeMargin,
+          margin: 0
         })
       )
     );
@@ -46,7 +47,7 @@ const OutputTable = ({
     };
 
     createBarcodes();
-  }, [records]);
+  }, [records, barcodeWidth, barcodeMargin]);
 
   // display nothing if empty rows
   if (records.length === 0) return null;
@@ -69,10 +70,12 @@ const OutputTable = ({
           return (
             <tr key={rowIndex}>
               {row.map((column, columnIndex) => (
-                <td key={columnIndex}>{column}</td>
+                <td key={columnIndex} style={{ padding: barcodeMargin }}>
+                  {column}
+                </td>
               ))}
               {
-                <td>
+                <td style={{ padding: barcodeMargin }}>
                   <img src={barcodes[rowIndex]} />
                 </td>
               }

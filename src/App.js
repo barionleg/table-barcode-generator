@@ -9,13 +9,13 @@ const App = () => {
   const [hasHeaderRow, setHasHeaderRow] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [outputType, setOutputType] = React.useState("inline");
+  const [outputType, setOutputType] = React.useState("table");
   const [delimiter, setDelimiter] = React.useState("\t");
   const [barcodeType, setBarcodeType] = React.useState("qrcode");
 
   // TODO: these are not used yet
-  const [barcodeWidth, setBarcodeWidth] = React.useState();
-  const [margin, setMargin] = React.useState();
+  const [barcodeWidth, setBarcodeWidth] = React.useState(100);
+  const [barcodeMargin, setBarcodeMargin] = React.useState(15);
 
   // this only handles delimiter change at the moment, only radio group used here
   const handleRadioChange = e => {
@@ -111,6 +111,42 @@ const App = () => {
               </label>
             </div>
 
+            <div className="columns">
+              <div className="column">
+                <div className="control">
+                  <div>
+                    Width (px):
+                    <input
+                      className="input"
+                      type="number"
+                      placeholder="Barcode width (px)"
+                      value={barcodeWidth}
+                      onChange={e =>
+                        setBarcodeWidth(parseInt(e.target.value), 10)
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="column">
+                <div className="control">
+                  <div>
+                    Margin (px):
+                    <input
+                      className="input"
+                      type="number"
+                      placeholder="Barcode margin (px)"
+                      value={barcodeMargin}
+                      onChange={e =>
+                        setBarcodeMargin(parseInt(e.target.value), 10)
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* <div className="control">
               Barcode type:&nbsp;
               <label className="radio">
@@ -159,6 +195,8 @@ const App = () => {
           records={records}
           hasHeaderRow={hasHeaderRow}
           barcodeType={barcodeType}
+          barcodeWidth={barcodeWidth}
+          barcodeMargin={barcodeMargin}
         />
       )}
 
@@ -167,6 +205,8 @@ const App = () => {
           records={records}
           hasHeaderRow={hasHeaderRow}
           barcodeType={barcodeType}
+          barcodeWidth={barcodeWidth}
+          barcodeMargin={barcodeMargin}
         />
       )}
 
