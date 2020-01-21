@@ -38,12 +38,6 @@ const OutputTable = ({
         // update state
         setBarcodes(qrcodes);
       }
-
-      if (barcodeType === "code128") {
-        // TODO: coming soon...
-      }
-
-      // TODO: other types of barcodes...
     };
 
     createBarcodes();

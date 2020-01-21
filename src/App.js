@@ -41,7 +41,7 @@ const App = () => {
               for the last column. Output is printer-friendly. Works with
               pasting in from a spreadsheet. Last column and barcode data will
               have whitespace padding trimmed. Lines starting with "#" are
-              ignored.
+              ignored. For "inline" output, only last columns is displayed.
             </p>
 
             <InputArea
