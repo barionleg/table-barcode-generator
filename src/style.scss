@@ -22,3 +22,16 @@ footer {
 .notification {
   margin-top: 0.5rem;
 }
+
+.output-inline {
+  display: flex;
+  flex-wrap: wrap;
+
+  .barcode {
+    text-align: center;
+  }
+
+  .text {
+    text-align: center;
+  }
+}

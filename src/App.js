@@ -2,21 +2,27 @@ import React from "react";
 import InputArea from "./InputArea";
 import OutputTable from "./OutputTable";
 import "./style.scss";
+import OutputInline from "./OutputInline";
 
 const App = () => {
   const [records, setRecords] = React.useState([]);
   const [hasHeaderRow, setHasHeaderRow] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [barcodeWidth, setBarcodeWidth] = React.useState();
+  const [outputType, setOutputType] = React.useState("inline");
   const [delimiter, setDelimiter] = React.useState("\t");
   const [barcodeType, setBarcodeType] = React.useState("qrcode");
-  const [margin, setMargin] = React.useState(); // not used
+
+  // TODO: these are not used yet
+  const [barcodeWidth, setBarcodeWidth] = React.useState();
+  const [margin, setMargin] = React.useState();
 
   // this only handles delimiter change at the moment, only radio group used here
   const handleRadioChange = e => {
     if (e.target.name === "delimiter")
       setDelimiter(e.target.value === "tab" ? "\t" : ",");
+
+    if (e.target.name === "outputType") setOutputType(e.target.value);
 
     if (e.target.name === "barcodeType") setBarcodeType(e.target.value);
   };
@@ -48,7 +54,6 @@ const App = () => {
           </div>
           <div className="column">
             <h2>Options</h2>
-
             <label className="checkbox">
               <input
                 type="checkbox"
@@ -59,6 +64,31 @@ const App = () => {
             </label>
 
             <div className="control">
+              Output type:&nbsp;
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="outputType"
+                  value="table"
+                  checked={outputType === "table"}
+                  onChange={handleRadioChange}
+                />
+                &nbsp;Table
+              </label>
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="outputType"
+                  value="inline"
+                  checked={outputType === "inline"}
+                  onChange={handleRadioChange}
+                />
+                &nbsp;Inline
+              </label>
+            </div>
+
+            <div className="control">
+              Delimiter:&nbsp;
               <label className="radio">
                 <input
                   type="radio"
@@ -81,7 +111,8 @@ const App = () => {
               </label>
             </div>
 
-            <div className="control">
+            {/* <div className="control">
+              Barcode type:&nbsp;
               <label className="radio">
                 <input
                   type="radio"
@@ -103,7 +134,7 @@ const App = () => {
                 />
                 &nbsp;Code128
               </label>
-            </div>
+            </div> */}
 
             <div>
               Title (optional):
@@ -123,11 +154,21 @@ const App = () => {
 
       {title !== "" && <h2 className="title">{title}</h2>}
 
-      <OutputTable
-        records={records}
-        hasHeaderRow={hasHeaderRow}
-        barcodeType={barcodeType}
-      />
+      {outputType === "table" && (
+        <OutputTable
+          records={records}
+          hasHeaderRow={hasHeaderRow}
+          barcodeType={barcodeType}
+        />
+      )}
+
+      {outputType === "inline" && (
+        <OutputInline
+          records={records}
+          hasHeaderRow={hasHeaderRow}
+          barcodeType={barcodeType}
+        />
+      )}
 
       <footer className="screen-only">
         &copy; <a href="https://gock.net/">Andy Gock</a> | source @
