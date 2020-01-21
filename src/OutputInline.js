@@ -17,8 +17,8 @@ const OutputInline = ({
     const qrcodes = await Promise.all(
       barcodeContent.map(data =>
         QRCode.toDataURL(data, {
-          width: barcodeWidth
-          // margin: barcodeMargin
+          width: barcodeWidth,
+          margin: 0
         })
       )
     );

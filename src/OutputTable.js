@@ -18,7 +18,6 @@ const OutputTable = ({
       barcodeContent.map(data =>
         QRCode.toDataURL(data, {
           width: barcodeWidth,
-          // margin: barcodeMargin,
           margin: 0
         })
       )
