@@ -9,19 +9,19 @@ have whitespace padding trimmed.
 
 ## Install
 
-    npm install -g parcel-bundler
-    npm install
+    yarn add global parcel-bundler
+    yarn
 
 Uses global install of `parcel-bundler`.
 
-If working in a team, you should install this locally instead with `npm install --save-dev parcel-bundler`
+If working in a team, you should instead install this locally instead with `yarn add parcel-bundler`
 
 ## Build
 
 For development
 
-    npm run start
+    yarn start
 
 For production
 
-    npm run build
+    yarn build
