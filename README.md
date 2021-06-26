@@ -9,7 +9,7 @@ have whitespace padding trimmed.
 
 ## Install
 
-    yarn add global parcel-bundler
+    yarn global add parcel-bundler
     yarn
 
 Uses global install of `parcel-bundler`.
