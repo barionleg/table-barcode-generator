@@ -1,5 +1,4 @@
 dist
 .cache
+.parcel-cache
 node_modules
-npm-debug.log
-package-lock.json

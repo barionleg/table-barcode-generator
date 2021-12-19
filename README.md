@@ -7,21 +7,22 @@ have whitespace padding trimmed.
 
 [Live web site](https://gock.net/table-barcode-generator/)
 
-## Install
+Install [pnpm](https://pnpm.io/)
 
-    yarn global add parcel-bundler
-    yarn
+    npm install -g pnpm
 
-Uses global install of `parcel-bundler`.
+Install dependencies
 
-If working in a team, you should instead install this locally instead with `yarn add parcel-bundler`
+    pnpm install
 
-## Build
+Start development server
 
-For development
+    pnpm start
 
-    yarn start
+Build for production into `dist/`
 
-For production
+    pnpm build
 
-    yarn build
+If required, use the following Netlify build command
+
+    pnpm build || ( npm install pnpm && pnpm build )
