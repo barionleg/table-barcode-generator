@@ -1,5 +1,5 @@
 import React from "react";
-import parse from "csv-parse";
+import { parse } from "csv-parse";
 
 const defaultContent = `1	dry flyer rule
 2	come rebel wrist
@@ -10,7 +10,7 @@ const InputArea = ({ onUpdate, delimiter = "\t", onError = () => {} }) => {
   const ref = React.useRef();
 
   // https://csv.js.org/parse/api/
-  const parseInput = async data => {
+  const parseInput = async (data) => {
     parse(
       data,
       {
@@ -19,7 +19,7 @@ const InputArea = ({ onUpdate, delimiter = "\t", onError = () => {} }) => {
         delimiter,
         comment: "#",
         trim: true,
-        skip_lines_with_Error: true
+        skip_lines_with_Error: true,
       },
       (err, output) => {
         if (err) {
@@ -44,13 +44,13 @@ const InputArea = ({ onUpdate, delimiter = "\t", onError = () => {} }) => {
   }, []);
 
   // when focusing, select all in textarea
-  const handleOnFocus = e => e.target.select();
+  const handleOnFocus = (e) => e.target.select();
 
   return (
     <textarea
       ref={ref}
       className="textarea is-family-monospace"
-      onChange={e => {
+      onChange={(e) => {
         setValue(e.target.value);
       }}
       onFocus={handleOnFocus}
