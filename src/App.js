@@ -18,7 +18,7 @@ const App = () => {
   const [barcodeMargin, setBarcodeMargin] = React.useState(15);
 
   // this only handles delimiter change at the moment, only radio group used here
-  const handleRadioChange = e => {
+  const handleRadioChange = (e) => {
     if (e.target.name === "delimiter")
       setDelimiter(e.target.value === "tab" ? "\t" : ",");
 
@@ -58,7 +58,7 @@ const App = () => {
               <input
                 type="checkbox"
                 checked={hasHeaderRow}
-                onChange={e => setHasHeaderRow(e.target.checked)}
+                onChange={(e) => setHasHeaderRow(e.target.checked)}
               />
               &nbsp;Contains header row
             </label>
@@ -115,13 +115,13 @@ const App = () => {
               <div className="column">
                 <div className="control">
                   <div>
-                    Width (px):
+                    Barcode width (px):
                     <input
                       className="input"
                       type="number"
                       placeholder="Barcode width (px)"
                       value={barcodeWidth}
-                      onChange={e =>
+                      onChange={(e) =>
                         setBarcodeWidth(parseInt(e.target.value), 10)
                       }
                     />
@@ -132,13 +132,13 @@ const App = () => {
               <div className="column">
                 <div className="control">
                   <div>
-                    Margin (px):
+                    Barcode margin (px):
                     <input
                       className="input"
                       type="number"
                       placeholder="Barcode margin (px)"
                       value={barcodeMargin}
-                      onChange={e =>
+                      onChange={(e) =>
                         setBarcodeMargin(parseInt(e.target.value), 10)
                       }
                     />
@@ -179,7 +179,7 @@ const App = () => {
                 type="text"
                 placeholder="Set output title (optional)..."
                 value={title}
-                onChange={e => setTitle(e.target.value)}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </div>
           </div>

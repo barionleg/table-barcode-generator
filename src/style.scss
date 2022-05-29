@@ -5,8 +5,11 @@
   td,
   th {
     border: solid 1px darkgray;
-    // padding: 1rem;
   }
+}
+
+.row {
+  width: 100%;
 }
 
 @media print {
