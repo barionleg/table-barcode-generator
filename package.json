@@ -11,16 +11,16 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.10",
+    "@babel/core": "^7.19.1",
     "@parcel/config-default": "^2.7.0",
     "@parcel/transformer-sass": "^2.7.0",
     "buffer": "^6.0.3",
-    "cssnano": "^5.1.12",
-    "eslint": "^8.21.0",
+    "cssnano": "^5.1.13",
+    "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "events": "^3.3.0",
     "normalize.css": "^8.0.1",
@@ -29,7 +29,7 @@
     "prettier": "^2.7.1",
     "process": "^0.11.10",
     "rimraf": "^3.0.2",
-    "sass": "^1.54.3",
+    "sass": "^1.55.0",
     "stream-browserify": "^3.0.0"
   },
   "scripts": {
