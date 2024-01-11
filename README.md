@@ -7,6 +7,8 @@ have whitespace padding trimmed.
 
 [Live web site](https://gock.net/table-barcode-generator/)
 
+This was developed using pnpm and the commands below are based on that. You can use standard `npm` commands if you prefer.
+
 Install [pnpm](https://pnpm.io/)
 
     npm install -g pnpm
