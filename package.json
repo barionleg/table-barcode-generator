@@ -1,5 +1,5 @@
 {
-  "name": "table-barcode-generator-vite",
+  "name": "table-barcode-generator",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -24,7 +24,6 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "sass": "^1.69.7",
     "vite": "^5.0.8"
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import InputArea from "./InputArea";
 import OutputTable from "./OutputTable";
-import "./style.scss";
+import "./style.css";
 import OutputInline from "./OutputInline";
 
 const App = () => {

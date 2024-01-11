@@ -1,11 +1,8 @@
-// To install Bulma: npm i -s bulma
 @import "../node_modules/bulma/css/bulma.css";
 
-.table-custom {
-  td,
-  th {
-    border: solid 1px darkgray;
-  }
+.table-custom td,
+.table-custom th {
+  border: solid 1px darkgray;
 }
 
 .row {
@@ -29,12 +26,12 @@ footer {
 .output-inline {
   display: flex;
   flex-wrap: wrap;
+}
 
-  .barcode {
-    text-align: center;
-  }
+.output-inline .barcode {
+  text-align: center;
+}
 
-  .text {
-    text-align: center;
-  }
+.output-inline .text {
+  text-align: center;
 }
