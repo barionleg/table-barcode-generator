@@ -13,7 +13,6 @@ const App = () => {
   const [delimiter, setDelimiter] = React.useState("\t");
   const [barcodeType, setBarcodeType] = React.useState("qrcode");
 
-  // TODO: these are not used yet
   const [barcodeWidth, setBarcodeWidth] = React.useState(100);
   const [barcodeMargin, setBarcodeMargin] = React.useState(15);
 
@@ -26,6 +25,14 @@ const App = () => {
 
     if (e.target.name === "barcodeType") setBarcodeType(e.target.value);
   };
+
+  // change html <title> to match state title, if it is not ""
+  React.useEffect(() => {
+    if (title !== "") document.title = title;
+
+    // if it is "", set it back to default
+    if (title === "") document.title = "TSV/CSV to Barcode Table Generator";
+  }, [title]);
 
   return (
     <div className="container">
