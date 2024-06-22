@@ -71,7 +71,7 @@ const OutputTable = ({
                 <td
                   key={columnIndex}
                   style={{ padding: barcodeMargin }}
-                  className="data"
+                  className="data is-family-monospace"
                 >
                   {column}
                 </td>
