@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 const OutputTable = ({
   records,
   barcodeType = "qrcode",
-  barcodeWidth = 100,
+  barcodeWidth = 200,
   barcodeMargin = 10,
   hasHeaderRow = false,
   errorCorrectionLevel = "M",
@@ -65,12 +65,16 @@ const OutputTable = ({
           return (
             <tr key={rowIndex}>
               {row.map((column, columnIndex) => (
-                <td key={columnIndex} style={{ padding: barcodeMargin }}>
+                <td
+                  key={columnIndex}
+                  style={{ padding: barcodeMargin }}
+                  className="data"
+                >
                   {column}
                 </td>
               ))}
               {
-                <td style={{ padding: barcodeMargin }}>
+                <td className="barcode" style={{ padding: barcodeMargin }}>
                   <img src={barcodes[rowIndex]} />
                 </td>
               }
