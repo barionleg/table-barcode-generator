@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 const OutputTable = ({
   records,
   barcodeType = "qrcode",
-  barcodeWidth = 200,
+  barcodeWidth = 100,
   barcodeMargin = 10,
   hasHeaderRow = false,
   errorCorrectionLevel = "M",
@@ -12,20 +12,23 @@ const OutputTable = ({
   const [barcodes, setBarcodes] = React.useState([]);
 
   // generate qr code for each row's last column, returns array of Promise resolving to an array of data URLs
-  const createQRCodes = async (barcodeContent) => {
-    // https://github.com/soldair/node-qrcode
-    // https://github.com/soldair/node-qrcode#qr-code-options
-    const qrcodes = await Promise.all(
-      barcodeContent.map((data) =>
-        QRCode.toDataURL(data, {
-          width: barcodeWidth,
-          margin: 0,
-          errorCorrectionLevel,
-        })
-      )
-    );
-    return qrcodes;
-  };
+  const createQRCodes = React.useCallback(
+    async (barcodeContent) => {
+      // https://github.com/soldair/node-qrcode
+      // https://github.com/soldair/node-qrcode#qr-code-options
+      const qrcodes = await Promise.all(
+        barcodeContent.map((data) =>
+          QRCode.toDataURL(data, {
+            width: barcodeWidth * 4, // scale it 4x, for print quality
+            margin: 0,
+            errorCorrectionLevel,
+          })
+        )
+      );
+      return qrcodes;
+    },
+    [barcodeWidth, errorCorrectionLevel]
+  );
 
   React.useEffect(() => {
     const createBarcodes = async () => {
@@ -42,7 +45,7 @@ const OutputTable = ({
     };
 
     createBarcodes();
-  }, [records, barcodeWidth, barcodeMargin]);
+  }, [records, barcodeWidth, barcodeMargin, barcodeType, createQRCodes]);
 
   // display nothing if empty rows
   if (records.length === 0) return null;
@@ -75,7 +78,11 @@ const OutputTable = ({
               ))}
               {
                 <td className="barcode" style={{ padding: barcodeMargin }}>
-                  <img src={barcodes[rowIndex]} />
+                  <img
+                    src={barcodes[rowIndex]}
+                    width={barcodeWidth}
+                    height={barcodeWidth}
+                  />
                 </td>
               }
             </tr>

@@ -47,8 +47,9 @@ const App = () => {
               Paste TSV or CSV contents to generate a table with a barcode added
               for the last column. Output is printer-friendly. Works with
               pasting in from a spreadsheet. Last column and barcode data will
-              have whitespace padding trimmed. Lines starting with "#" are
-              ignored. For "inline" output, only last columns is displayed.
+              have whitespace padding trimmed. Lines starting with &quot;#&quot;
+              are ignored. For &quot;inline&quot; output, only last columns is
+              displayed.
             </p>
 
             <InputArea
