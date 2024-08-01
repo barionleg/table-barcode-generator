@@ -48,8 +48,7 @@ const App = () => {
               for the last column. Output is printer-friendly. Works with
               pasting in from a spreadsheet. Last column and barcode data will
               have whitespace padding trimmed. Lines starting with &quot;#&quot;
-              are ignored. For &quot;inline&quot; output, only last columns is
-              displayed.
+              are ignored.
             </p>
 
             <InputArea
@@ -91,7 +90,7 @@ const App = () => {
                   checked={outputType === "inline"}
                   onChange={handleRadioChange}
                 />
-                &nbsp;Inline
+                &nbsp;Grid
               </label>
             </div>
 

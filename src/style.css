@@ -32,8 +32,15 @@ footer {
 }
 
 .output-inline {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 0;
+}
+
+.output-inline .cell {
+  border: solid 1px #eee;
+  padding: 10px;
 }
 
 .output-inline .barcode {
