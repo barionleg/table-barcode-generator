@@ -55,8 +55,12 @@ const OutputInline = ({
             <div className="barcode">
               <img src={barcodes[rowIndex]} />
             </div>
-            <div className="text">{row[row.length - 2]}</div>
-            <div className="text">{row[row.length - 1]}</div>
+            <div className="text is-family-monospace">
+              {row[row.length - 2]}
+            </div>
+            <div className="text is-family-monospace">
+              {row[row.length - 1]}
+            </div>
           </div>
         );
       })}

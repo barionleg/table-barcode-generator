@@ -49,4 +49,7 @@ footer {
 
 .output-inline .text {
   text-align: center;
+  font-size: small;
+  overflow-wrap: break-word;
+  font-family: monospace;
 }
