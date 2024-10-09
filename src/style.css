@@ -10,9 +10,17 @@ td.data {
   word-wrap: break-word;
 }
 
+@media screen {
+  /* barcode needs white background, otherwise not scannable if browser in dark mode */
+  td.barcode {
+    background-color: white;
+  }
+}
+
 @media print {
   body {
     margin: 1rem;
+    background-color: white;
   }
   .screen-only {
     display: none !important;
@@ -41,6 +49,7 @@ footer {
 .output-inline .cell {
   border: solid 1px #eee;
   padding: 10px;
+  background-color: white;
 }
 
 .output-inline .barcode {
