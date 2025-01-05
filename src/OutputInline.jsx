@@ -2,7 +2,7 @@ import React from "react";
 import QRCode from "qrcode";
 
 const OutputInline = ({
-  records,
+  records: rows,
   barcodeType = "qrcode",
   barcodeWidth = 100,
   barcodeMargin = 0.75,
@@ -28,7 +28,7 @@ const OutputInline = ({
   React.useEffect(() => {
     const createBarcodes = async () => {
       // get array of strings, to convert to barcodes
-      const barcodeContent = records.map((row) => row[row.length - 1]);
+      const barcodeContent = rows.map((row) => row[row.length - 1]);
 
       if (barcodeType === "qrcode") {
         // create array of base64 encodings of barcodes
@@ -40,11 +40,11 @@ const OutputInline = ({
     };
 
     createBarcodes();
-  }, [records, barcodeMargin, barcodeWidth]);
+  }, [rows, barcodeMargin, barcodeWidth]);
 
   return (
     <div className="output-inline">
-      {records.map((row, rowIndex) => {
+      {rows.map((row, rowIndex) => {
         if (hasHeaderRow && rowIndex === 0) return null;
         return (
           <div
@@ -52,15 +52,17 @@ const OutputInline = ({
             key={rowIndex}
             style={{ margin: barcodeMargin }}
           >
+            {/* barcode displayed always the last column of each row */}
             <div className="barcode">
               <img src={barcodes[rowIndex]} />
             </div>
-            <div className="text is-family-monospace">
-              {row[row.length - 2]}
-            </div>
-            <div className="text is-family-monospace">
-              {row[row.length - 1]}
-            </div>
+
+            {/* display each column of the row in its own div */}
+            {row.map((col, colIndex) => (
+              <div key={colIndex} className="text is-family-monospace">
+                {col}
+              </div>
+            ))}
           </div>
         );
       })}

@@ -8,6 +8,7 @@
 td.data {
   font-family: monospace;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 @media screen {
@@ -59,6 +60,7 @@ footer {
 .output-inline .text {
   text-align: center;
   font-size: small;
-  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
   font-family: monospace;
 }
